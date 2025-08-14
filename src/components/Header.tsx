@@ -1,11 +1,14 @@
+'use client'
+
 import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Menu, X, Waves } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const location = useLocation();
+  const pathname = usePathname();
   const { currentUser, logout } = useAuth();
 
   const menuItems = [
@@ -16,7 +19,7 @@ const Header: React.FC = () => {
     { name: 'Contato', path: '/contato' }
   ];
 
-  const isActive = (path: string) => location.pathname === path;
+  const isActive = (path: string) => pathname === path;
 
   const handleLogout = async () => {
     try {
@@ -31,7 +34,7 @@ const Header: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
+          <Link href="/" className="flex items-center space-x-2">
             <Waves className="h-8 w-8 text-blue-600" />
             <span className="text-xl font-bold text-gray-900">Associação de Surf</span>
           </Link>
@@ -41,7 +44,7 @@ const Header: React.FC = () => {
             {menuItems.map((item) => (
               <Link
                 key={item.name}
-                to={item.path}
+                href={item.path}
                 className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                   isActive(item.path)
                     ? 'text-blue-600 bg-blue-50'
@@ -87,7 +90,7 @@ const Header: React.FC = () => {
             {menuItems.map((item) => (
               <Link
                 key={item.name}
-                to={item.path}
+                href={item.path}
                 onClick={() => setIsMenuOpen(false)}
                 className={`block px-3 py-2 rounded-md text-base font-medium ${
                   isActive(item.path)

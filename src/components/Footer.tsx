@@ -1,4 +1,7 @@
+'use client'
+
 import React from 'react';
+import Link from 'next/link';
 import { Waves, Instagram, MessageCircle, Mail } from 'lucide-react';
 
 const Footer: React.FC = () => {
@@ -22,10 +25,10 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="text-lg font-semibold mb-4">Links Rápidos</h3>
             <ul className="space-y-2">
-              <li><a href="/" className="text-gray-300 hover:text-white transition-colors">Home</a></li>
-              <li><a href="/rankings" className="text-gray-300 hover:text-white transition-colors">Rankings</a></li>
-              <li><a href="/eventos" className="text-gray-300 hover:text-white transition-colors">Eventos</a></li>
-              <li><a href="/associado" className="text-gray-300 hover:text-white transition-colors">Associado</a></li>
+              <li><Link href="/" className="text-gray-300 hover:text-white transition-colors">Home</Link></li>
+              <li><Link href="/rankings" className="text-gray-300 hover:text-white transition-colors">Rankings</Link></li>
+              <li><Link href="/eventos" className="text-gray-300 hover:text-white transition-colors">Eventos</Link></li>
+              <li><Link href="/associado" className="text-gray-300 hover:text-white transition-colors">Associado</Link></li>
             </ul>
           </div>
 
